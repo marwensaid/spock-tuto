@@ -11,46 +11,36 @@ import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
 
-@ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = [Application.class] )
+// define the configuration context (this is a spring context like on JUNIT)
 class CustomerServiceSpec extends Specification {
 
     @Autowired
     CustomerService customerService
 
 
-    def setup() {
-        customerService.deleteAll()
-    }
+    // setup delete method
 
     def "insert customer"() {
 
         setup:
 
         // setup test class args
-        Address address = new Address()
-        address.setNumber("81")
-        address.setStreet("Mongo Street")
-        address.setTown("City")
-        address.setPostCode("CT81 1DB")
 
-        Account account = new Account()
-        account.setAccountName("Personal Account")
-        List<Account> accounts = new ArrayList<Account>()
-        accounts.add(account)
+        // create new address
 
-        Customer customer = new Customer()
-        customer.setAddress(address)
-        customer.setName("Mr Bank Customer")
-        customer.setAccounts(accounts)
+        // create new account and add it in a accountList
+
+        // create new customer including address and account
 
         when:
         customerService.insertCustomer(customer)
 
         then:
         def customers = customerService.findAllCustomers()
-        customers.size == 1
-        customers.get(0).name == "Mr Bank Customer"
-        customers.get(0).address.street == "Mongo Street"
+
+        // test retrieve juste one customer
+        // test customer name
+        // test customer street name
 
     }
 }

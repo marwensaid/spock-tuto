@@ -16,42 +16,19 @@ class CustomerServiceWithMocksSpec extends Specification {
     @Autowired
     CustomerService customerService
 
-    CustomerRepository customerRepository = Mock()
+    // create a mock for CustomerRepository
+
 
     def setup() {
-        customerService.customerRepository = customerRepository
+        // in the setup I wanna init a customerRepository
         customerService.deleteAll()
     }
 
-    def "insert customer"() {
 
-        setup:
+    // create a test for insert customer using the mock
 
-        // setup test class args
-        Address address = new Address()
-        address.setNumber("81")
-        address.setStreet("Mongo Street")
-        address.setTown("City")
-        address.setPostCode("CT81 1DB")
 
-        Account account = new Account()
-        account.setAccountName("Personal Account")
-        List<Account> accounts = new ArrayList<Account>()
-        accounts.add(account)
-
-        Customer customer = new Customer()
-        customer.setAddress(address)
-        customer.setName("Mr Bank Customer")
-        customer.setAccounts(accounts)
-
-        when:
-        customerService.insertCustomer(customer)
-
-        then:
-        1 * customerRepository.save(customer)
-
-    }
-
+    // in this test we gonna test the findAllCustomer method
     def "find all customers"() {
 
         setup:
@@ -65,16 +42,15 @@ class CustomerServiceWithMocksSpec extends Specification {
         customer.setName("Mr Bank Customer")
 
         // setup mocking
-        def mockCustomers = []
-        mockCustomers << customer
-        customerRepository.findAll() >> mockCustomers
+
 
         when:
         def customers = customerService.findAllCustomers()
 
         then:
-        customers.size() == 1
-        customers.get(0).name == "Mr Bank Customer"
+
+        // test customer size and name
+        def c
 
     }
 

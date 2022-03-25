@@ -4,13 +4,6 @@ import spock.lang.Specification
 
 class MathMaxSpec extends Specification {
 
-    def "computing the maximum of two numbers"() {
-        expect: "maximum of the two numbers is correctly calculated"
-        Math.max(a, b) == c
 
-        where: "given two numbers"
-        a << [5, 3]
-        b << [1, 9]
-        c << [5, 9]
-    }
+    // we gonna create a test using Math lib : define a and b and we gonna compare each time a and b and put in c the result of two compare.
 }
