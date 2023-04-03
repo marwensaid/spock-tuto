@@ -1,12 +1,6 @@
 package me.spock.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Account {
@@ -21,7 +15,7 @@ public class Account {
     private Customer customer;
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -29,7 +23,7 @@ public class Account {
     }
 
     public String getAccountName() {
-        return accountName;
+        return this.accountName;
     }
 
     public void setAccountName(String accountName) {
@@ -37,7 +31,7 @@ public class Account {
     }
 
     public Customer getCustomer() {
-        return customer;
+        return this.customer;
     }
 
     public void setCustomer(Customer customer) {
